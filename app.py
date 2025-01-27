@@ -4,9 +4,13 @@ from views import auth_bp, post_bp, team_bp, message_bp
 from flask_migrate import Migrate
 from models import db
 from flask_jwt_extended import JWTManager  
+from flask_cors import CORS
 import os 
+
+
 app = Flask(__name__)
 
+CORS(app)
 # Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
