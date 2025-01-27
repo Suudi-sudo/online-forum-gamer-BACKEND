@@ -4,7 +4,7 @@ from views import auth_bp, post_bp, team_bp, message_bp
 from flask_migrate import Migrate
 from models import db
 from flask_jwt_extended import JWTManager  
-
+import os 
 app = Flask(__name__)
 
 # Configuration
@@ -24,5 +24,6 @@ app.register_blueprint(post_bp, url_prefix='/posts')
 app.register_blueprint(team_bp, url_prefix='/teams')
 app.register_blueprint(message_bp, url_prefix='/messages')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
